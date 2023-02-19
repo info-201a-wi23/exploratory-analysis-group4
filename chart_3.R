@@ -1,6 +1,4 @@
 # Caleb's fancy chart correlating a movie's budget and its success in theaters.
-# The scatter plot below represents ___.
-# Note that the exchange rates are those of 31/12/2022 and are subject to fluctuation.
 
 library("tidyverse")
 library("dplyr")
