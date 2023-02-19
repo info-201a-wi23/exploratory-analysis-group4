@@ -12,7 +12,7 @@ IMDB_Horror_movies <- read.csv("https://raw.githubusercontent.com/info-201a-wi23
 
 # Create dataframe based on key columns
 # Grouped by top movie rating in the US
-horror_movie_df <- IMDB_Horror_movies %>% 
+table_horror_movie_df <- IMDB_Horror_movies %>% 
   rename( `Review Rating` = Review.Rating ,`Release Date` = Release.Date, `Release Country` = Release.Country) %>% 
   select(Title, `Review Rating`, `Release Date`, `Release Country`) %>% 
   group_by(`Review Rating`) %>% 
@@ -21,5 +21,3 @@ horror_movie_df <- IMDB_Horror_movies %>%
   relocate(`Review Rating`) %>% 
   arrange(desc(`Review Rating`)) %>% 
   head(n=10)
-  
-

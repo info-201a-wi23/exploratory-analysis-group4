@@ -25,7 +25,7 @@ IMDB_Horror_movies <- read.csv("https://raw.githubusercontent.com/info-201a-wi23
 # source all R files
 source('table.R')
 source('chart_1.R')
-# source('chart_2.R')
+source('chart_2.R')
 source('chart_3.R')
 
 ```
@@ -106,7 +106,7 @@ Write a summary paragraph of findings that includes the 5 values calculated from
 ### Table
 ```{r table, echo = FALSE, , warnings = FALSE, message = FALSE}
 
-knitr::kable(horror_movie_df,
+knitr::kable(table_horror_movie_df,
              col.names = c('Review Rating',
                            'Title',
                            'Release Date',
@@ -140,7 +140,8 @@ these were excluded from the data.
 Include a chart
 
 Describe why you chose this chart and what information it reveals
-
+```{r, echo = FALSE, warnings = FALSE, message = FALSE, code = readLines("chart_2.R")}
+```
 
 
 ### Chart 3

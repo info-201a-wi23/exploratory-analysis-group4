@@ -10,7 +10,7 @@ library(ggplot2)
 #Load the horror movie data from user file. 
 horror_movie_df <- read.csv("https://raw.githubusercontent.com/info-201a-wi23/exploratory-analysis-group4/main/IMDBHorrormovies.csv",
                             stringsAsFactors = T)
-View(horror_movie_df)
+
 
 #Select only the country and the rating of each number from the orignial data frame.
 #drop all the NA of the data frame since we want to ignore those. 
@@ -32,7 +32,6 @@ horror_movie_df <- new_df1
 world_map <- map_data("world")
 # 
 # # Merge the map data with the horror movie df. 
-View(merged_data)
 merged_data <- left_join(world_map, horror_movie_df, by = c("region" = "Country"))
 # 
 # # Create a ggplot object and use geom_map to plot the data
@@ -41,4 +40,5 @@ ggplot() +
   expand_limits(x = world_map$long, y = world_map$lat) +
   scale_fill_gradient(low = "white", high = "red", name = "Average Rating") +
   labs(x = "", y = "", title = "Average Horror Movie Rating by Country") +
-  theme_void() 
+  theme_void()
+
