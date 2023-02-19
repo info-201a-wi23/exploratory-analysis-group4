@@ -145,15 +145,15 @@ Describe why you chose this chart and what information it reveals
 
 ### Chart 3
 
-I chose this chart because it's great. It reveals a lot of things.
-
 The scatter plot below represents how a movie's production budget determines its success in theaters. 
-As seen below, the correlation between the two features proves inconclusive.
+As seen below, the correlation between the two features proves to be inconclusive.
 There are great clusters at $500,000; $1,000,000; and $1,500,000 as many producers round their expenses to the simplest value;
-as a result, the data is severely limited and does not accurately represent exactly how budget relates to success.
+as a result, the data is severely limited and does not accurately represent the production budget.
 Nevertheless, the data that clusters near $10,000 varies greatly and shows that many films seem to perform incredibly well or dismally poor regardless of their budget.
-(I would have ideally made a box and whiskers plot to properly analyze the data, but I lacked the knowledge to do so.)
+One could conclude budget has no effect on a film's success and other features must play a larger role.
+(I would have ideally made a box and whiskers plot to properly analyze the data, but I lacked the proper knowledge to do so.)
 It should be noted that there were thousands of films with no budget data and were unincluded.
+Furthermore, the most recent exchange rates of each budget was used, as not every exchange rate was in terms of USD.
 
 ```{r, echo = FALSE, warnings = FALSE, message = FALSE, code = readLines("chart_3.R")}
 ```
