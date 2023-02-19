@@ -129,8 +129,11 @@ Include a chart
 
 Describe why you chose this chart and what information it reveals
 
+
+
 ### Chart 3
 
-Include a chart
+I chose this chart because it's great. It reveals a lot of things.
 
-Describe why you chose this chart and what information it reveals
+``````{r, echo = FALSE, code = readLines("chart_3.R")}
+```
