@@ -5,6 +5,7 @@
 library(tidyverse)
 library(dplyr)
 library(readr)
+library("kableExtra")
 
 # Load data set
 IMDB_Horror_movies <- read_csv("~/info201/archive/IMDB Horror movies.csv")
