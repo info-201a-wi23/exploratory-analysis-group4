@@ -25,8 +25,10 @@ movie_data <- movie_data %>%
 
 single_decimal_scale <- function(x) sprintf("%.1f", x)
 
-ggplot(movie_data, aes(x = budgets_usd, y = Review.Rating)) + geom_point() + 
-  labs(title = "How Does a Production Budget Impact a Movie's User Rating?", 
-    x = "Production Budget ($USD)", y = "IMDB User Rating") + expand_limits(y = 0) +
+movie_data %>% 
+  drop_na() %>%
+  ggplot(aes(x = budgets_usd, y = Review.Rating)) + geom_point() + 
+  labs(title = "How Does a Production Budget Impact a Movie's Viewer Rating?", 
+    x = "Production Budget ($USD)", y = "IMDB Rating") + expand_limits(y = 0) +
   scale_x_continuous(limits = c(0, 1500000), labels = label_number_si()) +
   scale_y_continuous(breaks = seq(0, 10, 1), labels = single_decimal_scale)
