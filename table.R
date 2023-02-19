@@ -8,16 +8,18 @@ library(readr)
 library("kableExtra")
 
 # Load data set
-IMDB_Horror_movies <- read_csv("~/info201/archive/IMDB Horror movies.csv")
+IMDB_Horror_movies <- read.csv("https://raw.githubusercontent.com/info-201a-wi23/exploratory-analysis-group4/main/IMDBHorrormovies.csv")
 
 # Create dataframe based on key columns
 # Grouped by top movie rating in the US
 horror_movie_df <- IMDB_Horror_movies %>% 
-  select(Title, `Review Rating`, `Release Date`, Budget, `Release Country`) %>% 
+  rename( `Review Rating` = Review.Rating ,`Release Date` = Release.Date, `Release Country` = Release.Country) %>% 
+  select(Title, `Review Rating`, `Release Date`, `Release Country`) %>% 
   group_by(`Review Rating`) %>% 
   filter(!is.na(`Review Rating`)) %>% 
-  filter(!is.na(Budget)) %>% 
   filter(`Release Country` == "USA") %>% 
   relocate(`Review Rating`) %>% 
   arrange(desc(`Review Rating`)) %>% 
   head(n=10)
+  
+
