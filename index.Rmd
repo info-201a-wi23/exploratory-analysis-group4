@@ -116,7 +116,17 @@ Describe why you included the table and what information it reveals
 
 Include a chart
 
-Describe why you chose this chart and what information it reveals
+We thought of this plot because we wanted to check our hypothesis, about the movies 
+being rated best, or the best rated movies being around Halloween. 
+The data confirms that hypothesis, with October being the best month 
+in the year to release a horror movie. This spot is right before Halloween. 
+The worst time would be around January and march. this is also right at the 
+opposite end of the year from Halloween. 
+One could either argue there is a bias around Halloween, or that we generally
+feel more afraid around it. 
+
+Aside from this there were some movies which did not have a specific month with them,
+these were excluded from the data. 
 
 Here's an example of how to run an R script inside an RMarkdown file:
 
