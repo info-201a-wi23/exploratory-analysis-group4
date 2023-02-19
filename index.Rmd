@@ -7,7 +7,8 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE)
 
-# load necessary ALL libraries
+# load and install necessary ALL libraries
+
 library(dplyr)
 library(ggplot2)
 library(readr)
@@ -23,9 +24,9 @@ IMDB_Horror_movies <- read.csv("https://raw.githubusercontent.com/info-201a-wi23
 
 # source all R files
 source('table.R')
-#source('chart_1.R')
+source('chart_1.R')
 # source('chart_2.R')
-#source('chart_3.R')
+source('chart_3.R')
 
 ```
 ## Project title
@@ -103,7 +104,7 @@ Some challenges we might face during the project is that since we are working wi
 Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
 
 ### Table
-```{r table, echo = FALSE, message = FALSE}
+```{r table, echo = FALSE, , warnings = FALSE, message = FALSE}
 
 knitr::kable(horror_movie_df,
              col.names = c('Review Rating',
@@ -119,8 +120,6 @@ This table shows the top ten most highly rated horror movies in the United State
 
 ### Chart 1
 
-Include a chart
-
 We thought of this plot because we wanted to check our hypothesis, about the movies 
 being rated best, or the best rated movies being around Halloween. 
 The data confirms that hypothesis, with October being the best month 
@@ -133,10 +132,8 @@ feel more afraid around it.
 Aside from this there were some movies which did not have a specific month with them,
 these were excluded from the data. 
 
-Here's an example of how to run an R script inside an RMarkdown file:
-
-#```{r, echo = FALSE, code = readLines("chart1_example.R")}
-#```
+```{r, echo = FALSE, message = FALSE, warnings = FALSE, code = readLines("chart_1.R")}
+```
 
 ### Chart 2
 
@@ -158,5 +155,5 @@ Nevertheless, the data that clusters near $10,000 varies greatly and shows that 
 (I would have ideally made a box and whiskers plot to properly analyze the data, but I lacked the knowledge to do so.)
 It should be noted that there were thousands of films with no budget data and were unincluded.
 
-#```{r, echo = FALSE, code = readLines("chart_3.R")}
-#```
+```{r, echo = FALSE, , warnings = FALSE, message = FALSE, code = readLines("chart_3.R")}
+```

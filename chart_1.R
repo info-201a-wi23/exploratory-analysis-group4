@@ -11,7 +11,7 @@ library("dplyr")
 library("ggplot2")
 library("lubridate")
 
-Horror <- read.csv("C:/Users/gulno/Desktop/INFO201/IMDB_Horror_movies.csv", stringsAsFactors = TRUE)
+Horror <- read.csv("https://raw.githubusercontent.com/info-201a-wi23/exploratory-analysis-group4/main/IMDBHorrormovies.csv", stringsAsFactors = TRUE)
 
 Horror <- Horror %>% mutate(Release.Date = dmy(Release.Date))
 

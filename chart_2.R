@@ -8,7 +8,7 @@ library(dplyr)
 library(ggplot2)
 
 #Load the horror movie data from user file. 
-horror_movie_df <- read.csv("/Users/kazita/Desktop/UW2022-2023/Winter Quarter/INFO 201/Final Project/IMDB Horror movies.csv",
+horror_movie_df <- read.csv("https://raw.githubusercontent.com/info-201a-wi23/exploratory-analysis-group4/main/IMDBHorrormovies.csv",
                             stringsAsFactors = T)
 View(horror_movie_df)
 

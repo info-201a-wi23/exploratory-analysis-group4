@@ -4,8 +4,8 @@ library("tidyverse")
 library("dplyr")
 library("ggplot2")
 
-movie_data <- read.csv("~/IMDB_Horror_Movies.csv", stringsAsFactors = TRUE)
-exchange_rates <- read.csv("~/exchange_rates.csv") %>% 
+movie_data <- read.csv("https://raw.githubusercontent.com/info-201a-wi23/exploratory-analysis-group4/main/IMDBHorrormovies.csv", stringsAsFactors = TRUE)
+exchange_rates <- read.csv("https://raw.githubusercontent.com/info-201a-wi23/exploratory-analysis-group4/main/exchange_rates.csv") %>% 
   group_by(currency) %>% 
   filter(date == max(date, na.rm = TRUE)) %>% 
   select(currency, value)
