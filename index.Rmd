@@ -1,62 +1,114 @@
 ---
 title: "Exploratory Analysis"
+author: "Natalie Olson, Caleb Hur, Kazuma Itagaki, Gulnoor Brar"
+date: "02/18/2023"
 output: html_document
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE)
 
+# load necessary ALL libraries
+library(dplyr)
+library(ggplot2)
+library(readr)
+library("scales")
+library("maps")
+library("kableExtra")
+
+# load states dataframe into variable `covid` and filter for most recent data
+IMDB_Horror_movies <- read_csv("~/info201/archive/IMDB Horror movies.csv")
+
+# source all R files
+source('table.R')
+source('chart_1.R')
+source('chart_2.R')
+source('chart_3.R')
+
+```
 ## Project title
 
 Give your project a concise, interesting title that summarizes the entirety of your project
 
 ### Authors
 
-Names of your team members
+Natalie Olson (ngo610@uw.edu)
+Gulnoor Brar (gul2002@uw.edu)
+Caleb Hur (calebhur@uw.edu)
+Kazuma Itagaki (kazita03@uw.edu)
 
 ### Date
 
-Winter 2022
+Winter 2023
 
 ### Abstract
 
-No more than three sentences that summarize your project. Focus on the very most important aspects. For example: (1) "Our main question is .... This question is important because .... To address the question, we will ...." (2) "We are concerned with ..., because .... To address this concern, we plan to ...." (3) "Consider that .... This is important because .... Accordingly, we plan to ...."
+For our project, we’re seeking to answer what elements of a horror movie and its production contribute the most to its success. Media’s effect on the population is often overlooked, but popular movie trends can say a lot about modern culture. We’re interested in studying what patterns and trends influence a horror movie’s success the most and how that impacts its viewers.
 
 ### Keywords
 
-3-5 keywords that summarize your project.
-(e.g., "Keywords: human physiology; bicycle exercise; Gen Z; times-series data")
+Horror movies, media, pop culture, ratings, film
 
 ### Introduction  
 
-Briefly introduce your project.  Include 3-5 research questions. What motivates the questions? Why are they important? (at least 200 words)
+Our project seeks to explore popular trends in horror movie data through analyzing the elements that make up the most successful horror movies. We hope to discover:
+
+Do certain actors and cast members draw more viewers to horror movies?
+
+How big of a role does budget play in determining the success of a horror movie?
+
+Where are most horror movies filmed? How does this impact the overall success of the movie?
+
+How do all of these elements (budget, filming location, subgenre, director, etc) interact with each other and affect the movies' IMBD ratings? What kinds of patterns can be found here?
+
+How can data science can applicable to studying entertainment and the effects of media on society?
+
+Media has an undervalued yet crucial impact on people and society; movies, in particular, directly reflect modern culture and provide important thought around the past, present, and future. Our project seeks to connect our personal interests to data science, asking what we can learn from data science about a completely different field like entertainment. In addition, we hope our findings can also be interesting to anyone who is interested in media and film or data science. Our project will base our analysis on data provided by Tidy Tuesday and taken from IMDB.
 
 ### Related Work  
 
-Describe your topic and related work in this space. You must include 3 citations to related work (URLs to similar work, high quality articles from the popular press, research papers, etc. ) Please use a standard citation style of your choice. (at least 200 words)
+We are interested in horror movies, more specifically “why horror movies”. There are many aspects to horror movies/shows, including the cast, director, location, subgenre, runtime, and the type of horrors they have. We want to dissect what makes the best horror movies, including all of these aspects, so in the end we could have an answer to the question “What would be the most successful horror movie/show?”.While it may not be the most realistic and definitive answer, we believe it could point us into the direction of it, and still shine light on the type of horror movies/shows that are regarded as the best. There are some related works, in which horror and its psychological impacts are discussed and studied, Also an article which discusses the topic of why do we enjoy horror genre, These are cited below:
+
+Nummenmaa, L. (2021, March 4). Psychology and neurobiology of horror movies. https://doi.org/10.31234/osf.io/b8tgs
+
+Paul Bloom, The Paradox of Pleasurable Fear, Trends in Cognitive Sciences, Volume 25, Issue 2, 2021, Pages 93-94, ISSN 1364-6613, https://doi.org/10.1016/j.tics.2020.12.001.(https://www.sciencedirect.com/science/article/pii/S1364661320302965)
+
+Coolidge, F. L., Ph.D. (2021, October 23). Why We Enjoy Horror Films. Psychologytoday.com. Retrieved February 1, 2023, from Why We Enjoy Horror Films | Psychology Today
+
+These works go into the details of why the mind likes horror movies, its because of its fear behind a screen, There is a sort of thrill in feeling a bit uneasy and unsafe because we live in a much safer society than we used to. They also go over Sigmund Freud and David Hume's theories, about repressed emotions being released being therapeutic and people engaging in acts that scare them, make them sad, make them regret. While these judge the philosophically and psychological side of this genre, we could not find many articles statistically covering this.
 
 ### The Dataset
 
-Where did you find the data? Please include a link to the data source  
-Who collected the data?  
-How was the data collected or generated?  
-Why was the data collected?  
-How many observations (rows) are in your data?  
-How many features (columns) are in the data?  
-What, if any, ethical questions or questions of power do you need to consider when working with this data?  
-What are possible limitations or problems with this data?   (at least 200 words)
+We found the data through a database called TidyTuesday on GitHub. This data was collected from IMDB by PromptCloud (a web data crawling company); specifically, the company sifted through thousands of IMDB pages for horror movies and compiled the data for ease of use. There are 3303 observations and 12 features in the data, each concerning a critical aspect of any film. The data was collected to corroborate a [Stephen Follows article](What the data says about producing low-budget horror films (stephenfollows.com)) regarding the profit and popularity of horror movies.
+
+As for questions of power, IMDB has an agenda to push their ratings in favor of any partnerships they may have. Furthermore, advertisements are at the forefront of their business model, so IMDB is susceptible to bias and manipulation.
+
+One possible limitation with this data is on the collection method of viewer ratings. We are testing the success of each horror film with its viewer response, which is a highly fluctuating and variable number. There are a multitude of factors that could impact a person’s score for a movie: when they watched it, why they watched it, who they watched it with, whether they knew spoilers, among many other factors. These variables are impossible to accurately measure, and IMDB does not bother with discovering any underlying reasons for a viewer’s rating; they are only concerned with a number. Therefore, when considering our findings, we must remember that the feature (viewer ratings) we are testing a movie’s success against is not clear-cut.
 
 ### Implications
 
-Assuming you answer your research questions, briefly describe the expected or possible implications for technologists, designers, and policymakers. (at least 150 words)
+As we are able to answer our research questions, our data analysis will help with understanding what makes a successful horror movie. Since most of the data sets categories are objective, we are able to make a template or a reference of what makes a good horror movie. People who are interested in creating a new horror movie can refer to our project to see what exactly made a horror movie good (length, language, etc.). Another implication from our research is how we analyze the data set. Since we are looking at what makes something successful, another implication is that people can look at our project and see how we compared different movies and use that to compare other forms of media such as songs, shows, books, etc. Since comparing different works within genres is very common, our project would be a very good reference for those who want to compare works in the future.
 
 ### Limitations & Challenges
-What challenges or limitations might you need to address with your project idea more broadly? Briefly discuss. (at least 150 words)
+
+Some challenges we might face during the project is that since we are working with movies and how successful they are, the success of movies may be objective, but the reason behind their successes can be subjective. Why does one like a horror movie more than another? That is probably a subjective answer rather than an objective one. Though having a big data set that can help avoid that since it provides us with data that people have voted on and can agree on. Another challenge we may have with our project is that though we are looking into horror movies, there are also many different kinds of horror movies. Horror movies may be a subgroup of the movie category, even within the horror movie category there are more subcategories like jump scares, suspense, and such. Sometimes, it’s hard to compare these mini subcategories if they are too different from one another, like comparing an apple to a pencil (obviously an exaggerated comparison), two different things.
 
 ### Summary Information
 
 Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
 
 ### Table
+```{r table}
+table_caption <- paste("Top 10 Most Highly Rated Horror Movies in the USA")
 
-Include a table of aggregate information
+knitr::kable(horror_movie_df,
+             col.names = c('Review Rating',
+                           'Title',
+                           'Release Date',
+                           'Release Country'),
+             caption = table_caption) %>% 
+  kable_styling(bootstrap_options = "striped", full_width = F)
+
+```
 
 Describe why you included the table and what information it reveals
 
