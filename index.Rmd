@@ -7,21 +7,25 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE)
 
-# load necessary ALL libraries
+# load and install necessary ALL libraries
+
 library(dplyr)
 library(ggplot2)
 library(readr)
 library("scales")
 library("maps")
 library("kableExtra")
+library("quantmod")
+library("zoo")
+library("lubridate")
 
 # load states dataframe into variable `covid` and filter for most recent data
-IMDB_Horror_movies <- read_csv("~/info201/archive/IMDB Horror movies.csv")
+IMDB_Horror_movies <- read.csv("https://raw.githubusercontent.com/info-201a-wi23/exploratory-analysis-group4/main/IMDBHorrormovies.csv")
 
 # source all R files
 source('table.R')
 source('chart_1.R')
-source('chart_2.R')
+# source('chart_2.R')
 source('chart_3.R')
 
 ```
@@ -32,8 +36,11 @@ Give your project a concise, interesting title that summarizes the entirety of y
 ### Authors
 
 Natalie Olson (ngo610@uw.edu)
+
 Gulnoor Brar (gul2002@uw.edu)
+
 Caleb Hur (calebhur@uw.edu)
+
 Kazuma Itagaki (kazita03@uw.edu)
 
 ### Date
@@ -97,30 +104,35 @@ Some challenges we might face during the project is that since we are working wi
 Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
 
 ### Table
-```{r table}
-table_caption <- paste("Top 10 Most Highly Rated Horror Movies in the USA")
+```{r table, echo = FALSE, , warnings = FALSE, message = FALSE}
 
 knitr::kable(horror_movie_df,
              col.names = c('Review Rating',
                            'Title',
                            'Release Date',
                            'Release Country'),
-             caption = table_caption) %>% 
+             caption = "Top 10 Most Highly Rated Horror Movies in the USA") %>% 
   kable_styling(bootstrap_options = "striped", full_width = F)
 
 ```
 
-Describe why you included the table and what information it reveals
+This table shows the top ten most highly rated horror movies in the United States. Our data set features horror movies released between 2012 and 2017, so the dates in this table reflect some of the most modern films at the time this data was collected. With this table, we determined that there was a correlation between overall viewer appreciation for newer movies, with a couple exceptions. Out of the top 10 highly rated horror movies, only four of them were released prior to 2017, and none of them were released earlier than 2015. Out of thousands of horror movie ratings recorded by IMDB, very few had ratings above a nine out of ten. While this table only features movies released in the USA, it begs the question of whether horror movies produced in other countries may be rated higher. What other factors also contributed to these high ratings? Further observations of the data will help solve these questions.
 
 ### Chart 1
 
-Include a chart
+We thought of this plot because we wanted to check our hypothesis, about the movies 
+being rated best, or the best rated movies being around Halloween. 
+The data confirms that hypothesis, with October being the best month 
+in the year to release a horror movie. This spot is right before Halloween. 
+The worst time would be around January and march. this is also right at the 
+opposite end of the year from Halloween. 
+One could either argue there is a bias around Halloween, or that we generally
+feel more afraid around it. 
 
-Describe why you chose this chart and what information it reveals
+Aside from this there were some movies which did not have a specific month with them,
+these were excluded from the data. 
 
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart1_example.R")}
+```{r, echo = FALSE, message = FALSE, warnings = FALSE, code = readLines("chart_1.R")}
 ```
 
 ### Chart 2
@@ -143,5 +155,5 @@ Nevertheless, the data that clusters near $10,000 varies greatly and shows that 
 (I would have ideally made a box and whiskers plot to properly analyze the data, but I lacked the knowledge to do so.)
 It should be noted that there were thousands of films with no budget data and were unincluded.
 
-``````{r, echo = FALSE, code = readLines("chart_3.R")}
+```{r, echo = FALSE, warnings = FALSE, message = FALSE, code = readLines("chart_3.R")}
 ```
