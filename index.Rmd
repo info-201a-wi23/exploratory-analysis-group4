@@ -108,7 +108,7 @@ source('sum_info.R')
 ```
 ### Summary Information
 
-Our horror movie dataset included **`r summary_info$num_titles`** different horror movies with release dates ranging from **`r summary_info$earliest_date`** to **`r summary_info$latest_date`**. Out of all **`r summary_info$num_titles`** horror movies, **`r summary_info$highest_rated_movie`** was the highest rated movie with a rating of **`r summary_info$highest_rating`**, and **`r summary_info[["lowest_rated_movies"]][[1]]`** and **`r summary_info[["lowest_rated_movies"]][[2]]`** were the lowest rated movies with a rating of only **`r summary_info$lowest_rating`** out of 10. Although **`r summary_info$country_highest_avg_rating`** was the country with the highest average rating, the highest rated movie was released in the **`r summary_info$highest_rated_movie_country`**. While we are looking in particular at horror movies, many of these movies have multiple sub genres, such as Thriller or Drama, but the sub-genre with the highest rating on average was surprisingly **`r summary_info$highest_rated_genre`**. 
+Our horror movie dataset included **`r summary_info$num_titles`** different horror movies with release dates ranging from **`r summary_info$earliest_date`** to **`r summary_info$latest_date`**. Out of all **`r summary_info$num_titles`** horror movies, **`r summary_info$highest_rated_movie`** was the highest rated movie with a rating of **`r summary_info$highest_rating`**, and **`r summary_info[["lowest_rated_movies"]][[1]]`** and **`r summary_info[["lowest_rated_movies"]][[2]]`** were the lowest rated movies with a rating of only **`r summary_info$lowest_rating`** out of 10. Although **`r summary_info$country_highest_avg_rating`** was the country with the highest average rating, the highest rated movie was released in the **`r summary_info$highest_rated_movie_country`**, being **`r summary_info$usa_highest_rated`**. While we are looking in particular at horror movies, many of these movies have multiple sub genres, such as Thriller or Drama, but the sub-genre with the highest rating on average was surprisingly **`r summary_info$highest_rated_genre`**. 
 
 ### Table
 ```{r table, echo = FALSE, warnings = FALSE, message = FALSE, warning = FALSE}
@@ -144,10 +144,7 @@ these were excluded from the data.
 
 ### Chart 2
 
-#This scaled world map graph was created to see "which country has the highest average rating?" To answer this question, we ultimately
-#took the data, decided to only look at each movie's country and its rating (if NA, we ignore). After doing some calculation, as you can see
-#in our graph, that some countries are denser than others. After looking at our data, we saw that Maldives had the highest average rating and 
-#Nigeria having the lowest rating. Right behind Maldives, we had Sri Lanka and Camboida. 
+This scaled world map graph was created to see which country has the highest average rating. To answer this question, we ultimately took the data, decided to only look at each movie's country and its rating (if NA, we ignore). After doing some calculation, as you can see in our graph, that some countries are denser than others. After looking at our data, we saw that Maldives had the highest average rating and Nigeria having the lowest rating. Right behind Maldives, we had Sri Lanka and Camboida. 
 
 ```{r echo = FALSE, code = readLines("chart_2.R"), message = FALSE, warning = FALSE}
 ```
