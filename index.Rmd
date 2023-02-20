@@ -12,6 +12,8 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE)
 library(dplyr)
 library(ggplot2)
 library(readr)
+library(tidyverse)
+library(stringr)
 library("scales")
 library("maps")
 library("kableExtra")
@@ -99,12 +101,17 @@ As we are able to answer our research questions, our data analysis will help wit
 
 Some challenges we might face during the project is that since we are working with movies and how successful they are, the success of movies may be objective, but the reason behind their successes can be subjective. Why does one like a horror movie more than another? That is probably a subjective answer rather than an objective one. Though having a big data set that can help avoid that since it provides us with data that people have voted on and can agree on. Another challenge we may have with our project is that though we are looking into horror movies, there are also many different kinds of horror movies. Horror movies may be a subgroup of the movie category, even within the horror movie category there are more subcategories like jump scares, suspense, and such. Sometimes, it’s hard to compare these mini subcategories if they are too different from one another, like comparing an apple to a pencil (obviously an exaggerated comparison), two different things.
 
+
+```{r summary info, echo=FALSE, message=FALSE, warning = FALSE}
+source('sum_info.R')
+
+```
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
+Our horror movie dataset included **`r summary_info$num_titles`** different horror movies with release dates ranging from **`r summary_info$earliest_date`** to **`r summary_info$latest_date`**. Out of all **`r summary_info$num_titles`** horror movies, **`r summary_info$highest_rated_movie`** was the highest rated movie with a rating of **`r summary_info$highest_rating`**, and **`r summary_info[["lowest_rated_movies"]][[1]]`** and **`r summary_info[["lowest_rated_movies"]][[2]]`** were the lowest rated movies with a rating of only **`r summary_info$lowest_rating`** out of 10. Although **`r summary_info$country_highest_avg_rating`** was the country with the highest average rating, the highest rated movie was released in the **`r summary_info$highest_rated_movie_country`**. While we are looking in particular at horror movies, many of these movies have multiple sub genres, such as Thriller or Drama, but the sub-genre with the highest rating on average was surprisingly **`r summary_info$highest_rated_genre`**. 
 
 ### Table
-```{r table, echo = FALSE, , warnings = FALSE, message = FALSE}
+```{r table, echo = FALSE, warnings = FALSE, message = FALSE, warning = FALSE}
 
 knitr::kable(table_horror_movie_df,
              col.names = c('Review Rating',
@@ -116,7 +123,7 @@ knitr::kable(table_horror_movie_df,
 
 ```
 
-This table shows the top ten most highly rated horror movies in the United States. Our data set features horror movies released between 2012 and 2017, so the dates in this table reflect some of the most modern films at the time this data was collected. With this table, we determined that there was a correlation between overall viewer appreciation for newer movies, with a couple exceptions. Out of the top 10 highly rated horror movies, only four of them were released prior to 2017, and none of them were released earlier than 2015. Out of thousands of horror movie ratings recorded by IMDB, very few had ratings above a nine out of ten. While this table only features movies released in the USA, it begs the question of whether horror movies produced in other countries may be rated higher. What other factors also contributed to these high ratings? Further observations of the data will help solve these questions.
+This table shows the top ten most highly rated horror movies in the United States. Our data set features horror movies released between 2012 and 2017, so the dates in this table reflect some of the most modern films at the time this data was collected. With this table, we determined that there was a correlation between overall viewer appreciation for newer movies, with a couple exceptions. Out of the top 10 highly rated horror movies, only four of them were released prior to 2017, and none of them were released earlier than 2015. This calls into question that perhaps since the data was collected closer to these movies' initial releases if there weren't as many user ratings to bring their overall average down, especially since out of thousands of horror movie ratings recorded by IMDB, very few had ratings above a nine out of ten. While this table only features movies released in the USA, it begs the question of whether horror movies produced in other countries may be rated higher. What other factors also contributed to these high ratings? Further observations of the data will help solve these questions.
 
 ### Chart 1
 
@@ -132,7 +139,7 @@ feel more afraid around it.
 Aside from this there were some movies which did not have a specific month with them,
 these were excluded from the data. 
 
-```{r, echo = FALSE, message = FALSE, warnings = FALSE, code = readLines("chart_1.R")}
+```{r echo = FALSE, code = readLines("chart_1.R"), message = FALSE, warning = FALSE}
 ```
 
 ### Chart 2
@@ -140,7 +147,7 @@ these were excluded from the data.
 Include a chart
 
 Describe why you chose this chart and what information it reveals
-```{r, echo = FALSE, warnings = FALSE, message = FALSE, code = readLines("chart_2.R")}
+```{r echo = FALSE, code = readLines("chart_2.R"), message = FALSE, warning = FALSE}
 ```
 
 
@@ -156,5 +163,5 @@ One could conclude budget has no effect on a film's success and other features m
 It should be noted that there were thousands of films with no budget data and were unincluded.
 Furthermore, the most recent exchange rates of each budget was used, as not every exchange rate was in terms of USD.
 
-```{r, echo = FALSE, warnings = FALSE, message = FALSE, code = readLines("chart_3.R")}
+```{r echo = FALSE, code = readLines("chart_3.R"), message = FALSE, warning = FALSE}
 ```

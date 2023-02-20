@@ -2,7 +2,9 @@
 # Sum info file
 
 library(dplyr)
-library(tidyr)
+library(tidyverse)
+library("lubridate")
+library(stringr)
 
 # Load Dataframe
 movie_data <- read.csv("https://raw.githubusercontent.com/info-201a-wi23/exploratory-analysis-group4/main/IMDBHorrormovies.csv")
@@ -11,6 +13,23 @@ movie_data <- read.csv("https://raw.githubusercontent.com/info-201a-wi23/explora
 summary_info <- list()
 
 summary_info$num_titles <- nrow(movie_data)
+
+movie_data <- movie_data %>% 
+  mutate(Release.Date = dmy(Release.Date)) %>% 
+  mutate(Release.Date = as.Date(Release.Date, format = "%d/%m/%Y"))
+
+
+# Pull earliest release date
+summary_info$earliest_date <- movie_data %>% 
+  filter(Release.Date == min(Release.Date, na.rm = TRUE)) %>% 
+  pull(Release.Date)
+summary_info$earliest_date <- unique(summary_info$earliest_date)
+
+# Pull most recent release date
+summary_info$latest_date <- movie_data %>% 
+  filter(Release.Date == max(Release.Date, na.rm = TRUE)) %>% 
+  pull(Release.Date)
+summary_info$latest_date <- unique(summary_info$latest_date)
 
 # Pull the highest rating for a movie
 summary_info$highest_rating <- movie_data %>% 
@@ -22,6 +41,11 @@ summary_info$highest_rated_movie <- movie_data %>%
   filter(Review.Rating == max(Review.Rating, na.rm = TRUE)) %>% 
   pull(Title)
 
+# Pull the release country of the highest rated movie
+summary_info$highest_rated_movie_country <- movie_data %>% 
+  filter(Review.Rating == max(Review.Rating, na.rm = TRUE)) %>% 
+  pull(Release.Country)
+
 # Pull the lowest rating for a movie
 summary_info$lowest_rating <- movie_data %>% 
   filter(Review.Rating == min(Review.Rating, na.rm = TRUE)) %>% 
@@ -32,6 +56,8 @@ summary_info$lowest_rating <- unique(summary_info$lowest_rating)
 summary_info$lowest_rated_movie <- movie_data %>% 
   filter(Review.Rating == min(Review.Rating, na.rm = TRUE)) %>% 
   pull(Title)
+summary_info$lowest_rated_movie
+summary_info$lowest_rated_movies <- str_split(summary_info$lowest_rated_movie, " ,")
 
 # Find the highest rated movie in each country
 country_highest_ratings <- movie_data %>% 
@@ -74,3 +100,5 @@ movie_data_genres <- movie_data_sep_genre %>%
 summary_info$highest_rated_genre <- movie_data_genres %>% 
   filter(avg_genre_rating == max(avg_genre_rating, na.rm = TRUE)) %>% 
   pull(Genres)
+summary_info$highest_rated_genre <- gsub(" ", "", summary_info$highest_rated_genre)
+
