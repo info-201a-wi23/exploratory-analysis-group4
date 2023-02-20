@@ -42,3 +42,9 @@ ggplot() +
   labs(x = "", y = "", title = "Average Horror Movie Rating by Country") +
   theme_void()
 
+
+
+#This scaled world map graph was created to see "which country has the highest average rating?" To answer this question, we ultimately
+#took the data, decided to only look at each movie's country and its rating (if NA, we ignore). After doing some calculation, as you can see
+#in our graph, that some countries are denser than others. After looking at our data, we saw that Maldives had the highest average rating and 
+#Nigeria having the lowest rating. Right behind Maldives, we had Sri Lanka and Camboida. 
