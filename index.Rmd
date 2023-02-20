@@ -31,9 +31,7 @@ source('chart_2.R')
 source('chart_3.R')
 
 ```
-## Project title
-
-Give your project a concise, interesting title that summarizes the entirety of your project
+## Horror Movie Ratings
 
 ### Authors
 
